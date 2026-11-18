@@ -1,0 +1,29 @@
+ h2{
+            color: tomato;
+            background-color: beige;
+            /* font properties */
+            font-size: 50px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-weight: bold;
+            font-style: italic;
+
+            /* text properties */
+            text-align:center;
+            /* text-decoration:line-through; */
+            text-shadow:20px -23px 10px rgb(255, 234, 0) ;
+
+            letter-spacing:10px;
+            line-height: 100px;
+            
+        }
+        .sub-heading{
+            color: brown;
+        }
+        .support-heading{
+            color: red;
+            background-color: yellow;
+        }
+        #unique-heading{
+            color: tomato;
+            background-color: chocolate;
+        }
