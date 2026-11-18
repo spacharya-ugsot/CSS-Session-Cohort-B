@@ -3,19 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Box Model</title>
     <style>
+        /*
+        ==========================================================
+                        CSS BOX MODEL - QUICK NOTES
+        ==========================================================
+        Every HTML element is a rectangular box made of 4 layers
+        (from inside to outside):
+
+            +-------------------------------+
+            |            MARGIN             |  space OUTSIDE the border
+            |   +-----------------------+   |
+            |   |        BORDER         |   |  line around the element
+            |   |   +---------------+   |   |
+            |   |   |    PADDING    |   |   |  space INSIDE the border
+            |   |   |   +-------+   |   |   |
+            |   |   |   |CONTENT|   |   |   |  text / image
+            |   |   |   +-------+   |   |   |
+            |   |   +---------------+   |   |
+            |   +-----------------------+   |
+            +-------------------------------+
+
+        1) Content - the actual text/image. Size set by width & height.
+        2) Padding - gap between content and border (takes background color).
+        3) Border  - the outline around padding.
+        4) Margin  - gap between this element and other elements
+                     (always transparent).
+
+        Shorthand order for padding / margin / border-color (clockwise):
+            1 value  -> all 4 sides
+            2 values -> top&bottom  left&right
+            4 values -> top  right  bottom  left
+        ==========================================================
+        */
+
         .box{
-            width: 200px;
-            height: 200px;
-            background-color: bisque;
-            padding: 20px;
+            width: 200px;              /* content width */
+            height: 200px;             /* content height */
+            background-color: bisque;  /* fills content + padding */
+            padding: 20px;             /* space inside the border, all 4 sides */
+
+            /* Long way to write a border (3 separate properties): */
             /* border-width: 10px;
             border-style: solid;
             border-color: brown; */
-            border: 0px solid;
-            /* border-style: double; */
+
+            /* Shorthand: border: width style color; */
+            border: 0px solid;         /* 0px = border not visible; try 10px */
+            /* border-style: double; */   /* other styles: dotted, dashed, double */
+
+            /* 4 colors -> top right bottom left */
             border-color: rgb(178, 229, 248) green rgb(178, 229, 248) orange;
+
+            /* border-radius rounds the corners (this makes a blob shape) */
             border-radius: 26% 74% 37% 63% / 45% 36% 64% 55% ;
 
         }
@@ -23,21 +64,30 @@
             width: 300px;
             height: 200px;
             border: 3px solid black;
-            margin: 20px;
-            /* automatically drag the element into center page, works only in x axis */
+            margin: 20px;              /* 20px space outside on all 4 sides */
+            /* margin: auto -> browser splits leftover space equally on left & right,
+               so the element moves to the CENTER horizontally.
+               Works only on the x-axis and only when the element has a width.
+               NOTE: this line overrides "margin: 20px" above (last rule wins). */
             margin: auto;
-            
+
         }
     </style>
 </head>
 <body>
 
+   <!-- Box with padding, border-color and border-radius -->
    <div class="box">hgfdtydju. uhvhvh jhbjh</div>
 
+   <!-- Boxes centered using margin: auto -->
    <div class="box2">fjbvjh</div>
    <div class="box2">hgfghuf</div>
    <div class="box2">hgfghfgfgh</div>
    <div class="box2">hfygtftyfytfytfyt</div>
-    
+
+   <!-- TRY IT YOURSELF:
+        Right-click a box > Inspect, and look at the "box model" diagram
+        in the Computed tab to see content, padding, border and margin. -->
+
 </body>
 </html>

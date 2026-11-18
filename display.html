@@ -3,21 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Display: block, inline, inline-block</title>
     <style>
-        .box{
-            width: 300px;
-            height: 200px;
+        /*
+        ==========================================================
+                    CSS DISPLAY PROPERTY - QUICK NOTES
+        ==========================================================
+
+        The "display" property decides HOW an element sits on the page:
+        does it take a full line, or does it sit next to other elements?
+
+        ----------------------------------------------------------
+        1) display: block;
+        ----------------------------------------------------------
+           - Always STARTS ON A NEW LINE.
+           - Takes the FULL WIDTH available (stretches left to right),
+             unless you give it a width.
+           - width and height WORK.
+           - margin and padding WORK on all 4 sides.
+           - Default block elements: <div>, <p>, <h1>-<h6>, <ul>, <li>,
+             <section>, <header>, <footer>, <form>
+
+        ----------------------------------------------------------
+        2) display: inline;
+        ----------------------------------------------------------
+           - Does NOT start on a new line. Sits next to other content,
+             like words in a sentence.
+           - Takes ONLY AS MUCH WIDTH AS ITS CONTENT needs.
+           - width and height DO NOT WORK (they are ignored).
+           - margin/padding left & right WORK.
+             margin top & bottom DO NOT push other elements away.
+             (padding top/bottom shows, but can overlap other lines)
+           - Default inline elements: <span>, <a>, <strong>, <em>,
+             <b>, <i>, <img>*, <label>
+             (*img is special - it accepts width/height)
+
+        ----------------------------------------------------------
+        3) display: inline-block;
+        ----------------------------------------------------------
+           - BEST OF BOTH: sits on the SAME LINE like inline,
+             but behaves like a box like block.
+           - Does NOT start on a new line.
+           - width and height WORK.
+           - margin and padding WORK on all 4 sides.
+           - Commonly used for: buttons, nav menu items, cards in a row.
+
+        ----------------------------------------------------------
+                        SUMMARY TABLE
+        ----------------------------------------------------------
+        | Feature              | block   | inline | inline-block |
+        |----------------------|---------|--------|--------------|
+        | Starts on new line   | YES     | NO     | NO           |
+        | Width & height work  | YES     | NO     | YES          |
+        | Top/bottom margin    | YES     | NO     | YES          |
+        | Default width        | Full    | Content| Content /    |
+        |                      | line    | size   | set width    |
+        ----------------------------------------------------------
+        */
+
+        /* ---------- Example 1: BLOCK ---------- */
+        .block-box{
+            display: block;          /* each box goes on its own line */
+            width: 300px;            /* width works */
+            height: 80px;            /* height works */
+            margin: 10px;            /* margin works on all sides */
             border: 3px solid black;
-            display: inline-block;
+            background-color: lightblue;
+        }
+
+        /* ---------- Example 2: INLINE ---------- */
+        .inline-box{
+            display: inline;         /* boxes sit side by side like text */
+            width: 300px;            /* IGNORED - width does not work on inline */
+            height: 80px;            /* IGNORED - height does not work on inline */
+            margin: 30px;            /* only left/right margin pushes others */
+            border: 3px solid black;
+            background-color: lightgreen;
+        }
+
+        /* ---------- Example 3: INLINE-BLOCK ---------- */
+        .box{
+            display: inline-block;   /* side by side AND width/height work */
+            width: 300px;            /* width works */
+            height: 200px;           /* height works */
+            margin: 10px;            /* margin works on all sides */
+            border: 3px solid black;
+            background-color: lightyellow;
         }
     </style>
 </head>
 <body>
 
+    <!-- =====================================================
+         Example 1: display: block
+         Observe: each box starts on a NEW LINE,
+                  and width/height are applied.
+         ===================================================== -->
+    <h2>1. display: block</h2>
+    <div class="block-box">Block 1</div>
+    <div class="block-box">Block 2</div>
+    <div class="block-box">Block 3</div>
+
+    <!-- =====================================================
+         Example 2: display: inline
+         Observe: boxes sit on the SAME LINE,
+                  width/height are IGNORED (box is only as big as the text).
+         ===================================================== -->
+    <h2>2. display: inline</h2>
+    <div class="inline-box">Inline 1</div>
+    <div class="inline-box">Inline 2</div>
+    <div class="inline-box">Inline 3</div>
+
+    <!-- =====================================================
+         Example 3: display: inline-block
+         Observe: boxes sit on the SAME LINE,
+                  AND width/height are applied.
+         ===================================================== -->
+    <h2>3. display: inline-block</h2>
     <div class="box">dbch</div>
     <div class="box">kdbcjhdsb</div>
     <div class="box">cjhdzhchjzdbchjb</div>
-    
+
+    <!-- TRY IT YOURSELF:
+         Change "display" in any class above to block / inline / inline-block
+         and refresh the browser to see how the layout changes. -->
+
 </body>
 </html>

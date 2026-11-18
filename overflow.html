@@ -3,23 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Overflow</title>
     <style>
+        /*
+        ==========================================================
+                        CSS OVERFLOW - QUICK NOTES
+        ==========================================================
+        "Overflow" happens when the CONTENT inside a box is BIGGER
+        than the box itself (fixed width/height).
+        The overflow property decides what to do with the extra part.
+
+        1) overflow: visible;   (DEFAULT)
+           - Extra content spills OUTSIDE the box and is still shown.
+
+        2) overflow: hidden;
+           - Extra content is CUT OFF (clipped) and not shown.
+           - Also clips children to the parent's rounded corners
+             (border-radius), as in the example below.
+
+        3) overflow: scroll;
+           - Always shows scrollbars, even if content fits.
+
+        4) overflow: auto;
+           - Shows scrollbars ONLY when content is too big.
+
+        Bonus: overflow-x / overflow-y control only one direction.
+               e.g. overflow-x: hidden;  overflow-y: auto;
+
+        IMPORTANT: overflow is written on the PARENT (the container),
+                   not on the child that is overflowing.
+        ==========================================================
+        */
+
+        /* PARENT container: fixed size, made into a circle */
         .box{
             width: 400px;
             height: 400px;
             border: 2px solid black;
             background-color: rgb(222, 226, 226);
-            border-radius:50%;
+            border-radius:50%;         /* 50% = circle */
             /* overflow only apply in the parent div */
             /* Add a comment to the line below, check the output, and then uncomment it. */
+            /* hidden -> image & text outside the circle are cut off.
+               Without it, the square image corners stick out of the circle. */
             overflow: hidden;
         }
+
+        /* CHILD image: fills the full width of the parent */
         .box img{
             width: 100%;
             border-top-left-radius: 40px;
             border-top-right-radius: 40px;
         }
+
+        /* CHILD paragraph: padding gives space around the text */
         .box p{
             padding: 10px;
         }
@@ -27,6 +64,10 @@
 </head>
 <body>
 
+    <!-- Parent div with overflow: hidden.
+         The image and paragraph are its children.
+         TRY IT YOURSELF: change overflow to visible / scroll / auto
+         and refresh to see the difference. -->
     <div class="box">
         <img src="https://sot.upgrad.com/_next/image?url=%2Fassets%2FADYPU%2Fadypu_bg.png&w=3840&q=75">
         <p>sdjuhsdknjd hisdn c hjisdc. sdcink sdcjhiabdijc jklad cjo lmsd jsd nk nsjkdv hjk. dsk</p>

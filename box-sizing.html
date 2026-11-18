@@ -3,8 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Box Sizing</title>
     <style>
+        /*
+        ==========================================================
+                        BOX-SIZING - QUICK NOTES
+        ==========================================================
+        box-sizing decides WHAT the "width" and "height" include.
+
+        1) box-sizing: content-box;   (browser DEFAULT)
+           - width/height = CONTENT only.
+           - padding and border are ADDED on top.
+           - Example: width 300 + padding 30*2 + border 10*2
+                      = 380px actual width  (box looks bigger than you set)
+
+        2) box-sizing: border-box;    (recommended)
+           - width/height = content + padding + border.
+           - Box stays EXACTLY the size you set; content area shrinks.
+           - Example: actual width = 300px
+                      (content = 300 - 60 padding - 20 border = 220px)
+
+        | Property        | content-box  | border-box   |
+        |-----------------|--------------|--------------|
+        | width includes  | content only | content +    |
+        |                 |              | padding +    |
+        |                 |              | border       |
+        | final width     | 380px        | 300px        |
+        ==========================================================
+        */
+
+        /* "*" = universal selector -> applies to EVERY element.
+           Common "CSS reset": remove default margin/padding of the
+           browser and make all elements use border-box. */
         *{
             margin: 0;
             padding: 0;
@@ -16,14 +46,29 @@
             border: 10px solid brown;
             padding: 30px;
         }
+
+        /* Box 1: default behaviour -> final size 380 x 280 */
+        /* (needed here because "*" above changed everything to border-box) */
+        .content-box{
+            box-sizing: content-box;
+        }
+
+        /* Box 2: final size stays 300 x 200 */
         .border-box{
             box-sizing: border-box;
         }
     </style>
 </head>
 <body>
+    <!-- Box 1: content-box -> looks BIGGER (padding + border added outside width) -->
     <div class="box content-box"></div>
+
+    <!-- Box 2: border-box -> exactly 300px wide (padding + border inside width) -->
     <div class="box border-box"></div>
-    
+
+    <!-- TRY IT YOURSELF:
+         Right-click each box > Inspect, and compare their real width in the
+         Computed tab. -->
+
 </body>
 </html>
